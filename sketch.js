@@ -10,13 +10,16 @@ wall = createSprite(1500,200,60,800);
 speed = random(55,90);
 weight = random(400,1500);
 car.velocityX = speed;
-deform = 0.5*weight*speed*speed/22500;
+
 
 }
 function draw(){
   background("black");
   console.log(deform);
-   car.collide(wall);
+  if(wall.x-car.x<wall.width/2+car.width/2){
+    
+    deform = 0.5*weight*speed*speed/22500;
+  
   if(deform>180){
     car.shapeColor=color(255,0,0);
     
@@ -25,10 +28,11 @@ function draw(){
     car.shapeColor=color(230,230,0);
     
   }
+    
   if(deform<100){
     car.shapeColor=color(0,255,0);
   }
-  
+  }
   
   drawSprites();
 }
